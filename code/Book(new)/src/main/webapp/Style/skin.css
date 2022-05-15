@@ -1,0 +1,125 @@
+/*字体样式*/
+* {margin:0;
+	padding:0;
+	font-family:Arial,"Arial Black","微软雅黑","宋体";/*指定文本所使用的字体类型*/
+}
+/*设置列表项标记的类型为空*/
+ul {list-style:none;}
+/*去除a标签下划线*/
+a {text-decoration:none; color:#000;}
+/*设置表行和单元格的边合并*/
+table {border-collapse:collapse;}
+/*设置单元格边框和字体样式*/
+table.cont {
+	font-size:13px;/*字体大小*/
+	letter-spacing:1px;/*字母间距为1px*/
+	border:1px solid #E1E5EE;/*指定元素边框的线宽1px，样式为实线和该指定颜色*/
+}
+/*设置单元格背景色*/
+table.tr_color tr.d:hover {background-color:#E4F0DF;}
+/*设置单元格样式*/
+table.cont tr td {
+	height:20px;/*高为20像素*/
+	padding:5px 5px;/*上下左右填充为5px*/
+	border-bottom:1px solid #E1E5EE;/*设置单元格底部边框为像素宽1、实线、指定颜色*/
+}
+/*设置表格标题样式*/
+table.cont tr th {
+	height:20px;/*高为20像素*/
+	padding:5px 0;/*仅上下填充5px*/
+	border-bottom:1px solid #E1E5EE;/*单元格底部边框为像素宽1、实线、指定颜色*/
+	background-color:#E7F1FE;/*设置背景色*/
+}
+/*设置表格输入框样式*/
+table.cont input.text {
+	height:20px;/*高为20像素*/
+	width:150px; /*宽为150像素*/
+	padding: 0px 5px; /*仅左右填充5像素*/
+}
+/*设置表格图片覆盖区域样式*/
+table.cont img.cover {
+	width: 40px;/*高为40像素*/
+	height:50px;/*宽为50像素*/
+}
+/*设置表格选择框样式*/
+table.cont select option {
+	height:20px;/*高为20像素*/
+	width:120px;/*宽为120像素*/
+}
+table.cont .btn {width:50px;}
+/*主体样式*/
+body {
+	font-size:12px;/*字体大小为12像素*/
+	color:#000;/*字体颜色为黑色*/
+	background-color:#EEF2FB;/*指定主体背景颜色*/
+}
+#container {width:182px;}/*id为container的这个标签的宽为182像素*/
+/*h1标题字体样式*/
+h1 {
+	font-size:15px;/*字体大小为15像素*/
+	width:182px;/*宽为182像素*/
+	cursor:pointer;/*鼠标光标指示链接时显示为一只手*/
+	height:30px;/*高为30像素*/
+	line-height:20px;/*行高为20px*/
+}
+/*样式*/
+h1 a {
+	display:block;/*在里面生成一个元素前后带换行符的行内框*/
+	width:182px;/*宽为182px*/
+	height:30px;/*高为30px*/
+	moz-outline-style:none;/*围绕元素设置为无轮廓*/
+	background:url(../images/menu_bgs.gif) no-repeat;/*设置背景图*/
+	line-height:30px;/*线宽*/
+	text-align:center;/*文字位置居中*/
+}
+.content{width:182px;height:26px;}
+/*定义列表样式*/
+.RM ul {list-style-type:none;display:block;}
+.RM li {line-height:26px;color:#333333;height:26px;width:182px;}
+.RM {width:182px;left:0px;top:0px;clip:rect(0px,0px,0px,0px);}
+.RM a:link,.RM a:visited {line-height:26px;color:#333333;background:url(../images/menu_bg1.gif) no-repeat;height:26px;width:182px;display:block;text-align:center;overflow:hidden;}
+.RM a:hover {font-weight:bold;color:#006600;background:url(../images/menu_bg2.gif) no-repeat;}
+.title {margin:0 5px;width:85px;line-height:26px;font-weight:bold;background:url(../images/top_bt.jpg) no-repeat;display:block;text-indent:15px;padding-top:5px;float:left;}
+.left_bt {line-height:25px;font-weight:bold;color:#333333;}
+.left_txt {line-height:25px;color:#666666;}
+#news ul {margin-left:20px;}
+#news ul li {height:25px;line-height:25px;font-size:15px;}
+#left_cont {width:50%;background:url(../images/login_content_bg.gif) no-repeat scroll right center;}
+#left_cont ul {float:right;margin-top:10px;text-align:left;font-size:1.2em;}
+#left_cont ul li {height:30px;}
+#right_cont #form tr {width:200px;height:40px;font-size:15px;}
+#right_cont input {height:22px;border:1px solid #CCCCCC;}
+#right_cont .bt input {height:25px;width:50px;text-align:center;padding-bottom:2px;}
+#login_bot {height:50px;color:#B9E8F5;font-size:15px;text-align:center;background-color:#1D3647;}
+textarea {width:300px;height:100px;resize:none;}
+.err{
+    visibility: hidden;
+    color:red;
+    font-weight: bold;
+}
+.btn{
+   width: 80px;
+}
+.run-right{
+  text-align:right;
+}
+.pager {
+	margin-top: 15px;
+}
+/*.pager ul {
+	float: right;
+}*/
+.pager ul li {
+/*	float: left;*/
+	border: 1px solid #eee;
+	line-height: 18px;
+	padding: 0 3px;
+	margin: 0 1px;
+	display: inline;
+}
+.pager ul li.current {
+	font-weight: bold;
+	color: #630;
+  background-color: lightskyblue;
+  border-radius: 0.8;
+}

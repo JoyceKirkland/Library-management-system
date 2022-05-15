@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zy.ems.dao.recordsDAO">
+<!--    添加借阅记录-->
+    <insert id="addRecord_rent" parameterType="com.zy.ems.entity.Record">
+        insert into record(reader_idNumber,bookName,rentDate,backDate,state,real_back_Date)
+        values (#{idNumber_result},(select name from book where id=#{id}),
+                CURRENT_DATE ,(select DATE_ADD(NOW(), interval 1 MONTH)),'在借','未还' )
+    </insert>
+
+<!--  查询所有记录方法  -->
+    <select id="findAllrecords" resultType="com.zy.ems.entity.Record">
+        --         select id,name,typeId,author,publish,stock,pic from book
+        select * from record
+    </select>
+<!--    显示所有未还记录-->
+    <select id="findRentRecord" resultType="com.zy.ems.entity.Record">
+        select * from record where real_back_Date='未还'
+    </select>
+<!--    更新归还记录-->
+    <update id="returnBook" parameterType="String">
+        update record set real_back_Date=CURRENT_DATE,state="已还"
+            where reader_idNumber=#{reader_idNumber} and bookName=#{bookName} and real_back_Date='未还'
+
+    </update>
+<!--    续借方法-->
+    <insert id="renew_Book" parameterType="com.zy.ems.entity.Record">
+        insert into record(reader_idNumber,bookName,rentDate,backDate,state,real_back_Date)
+        values (#{reader_idNumber},#{bookName},
+                CURRENT_DATE ,(select DATE_ADD(NOW(), interval 1 MONTH)),'续借','未还' )
+    </insert>
+<!--    findReadersRent-->
+    <select id="findReadersRent" parameterType="String" resultType="com.zy.ems.entity.Record">
+        select * from record where reader_idNumber=#{idNumber}
+    </select>
+
+</mapper>

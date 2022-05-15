@@ -1,0 +1,22 @@
+spring:
+  mvc:
+    view:
+      prefix: /
+      suffix: .jsp
+  application:
+    name: ems
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/bookdb?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+    username: root
+    password: 123456
+
+server:
+  servlet:
+    context-path: /ems
+    jsp:
+      init-parameters:
+        development: true #热部署
+mybatis:
+  mapper-locations: classpath:/mapper/*.xml
+  type-aliases-package: com.zy.ems.entity

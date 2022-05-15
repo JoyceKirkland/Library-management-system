@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zy.ems.dao.readersDAO">
+    <!--    查找用户是否存在-->
+    <select id="rentBook_mem" parameterType="String" resultType="com.zy.ems.entity.Readers">
+        select * from member where idNumber=#{idNumber_find}
+    </select>
+<!--   添加新借阅者-->
+    <insert id="readersAdd" parameterType="com.zy.ems.entity.Readers">
+        insert into member(name,pwd,regdate,tel,idNumber)
+        values (#{name},#{pwd},CURRENT_DATE ,#{tel},#{idNumber})
+    </insert>
+<!--    列出所有借阅者-->
+    <select id="findAllreaders" resultType="com.zy.ems.entity.Readers">
+        --         select id,name,typeId,author,publish,stock,pic from book
+        select * from member
+    </select>
+<!--    changeReadersById-->
+    <!--    修改某位借阅者页面（根据id查找）-->
+    <select id="changeReadersById" parameterType="String" resultType="com.zy.ems.entity.Readers">
+        select * from member where id=#{id}
+    </select>
+<!--    修改某位借阅者信息-->
+    <update id="updateReader" parameterType="com.zy.ems.entity.Readers">
+        update member set name=#{name},tel=#{tel},idNumber=#{idNumber}
+
+        where id=#{id}
+    </update>
+<!--    删除某位借阅者-->
+    <delete id="deleteReaderById" parameterType="String">
+        delete from member where id=#{id}
+    </delete>
+    <select id="readerLogin" resultType="com.zy.ems.entity.Readers">
+        select * from member where name=#{name} and pwd=#{pwd}
+    </select>
+</mapper>

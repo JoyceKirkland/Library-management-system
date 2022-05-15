@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zy.ems.dao.booksDAO">
+    <!--查询所有书籍-管理员-->
+    <select id="findAllbooks" resultType="com.zy.ems.entity.Books">
+--         select id,name,typeId,author,publish,stock,pic from book
+        select * from book
+    </select>
+<!--    查询所有书籍-读者-->
+    <select id="readers_findAllbooks" resultType="com.zy.ems.entity.Books">
+        --         select id,name,typeId,author,publish,stock,pic from book
+        select * from book
+    </select>
+<!--    显示书籍详情(根据id查找)-->
+    <select id="findById" parameterType="String" resultType="Books">
+        select id,name,typeId,stock,price,publish,author,address,`desc` from book where id=#{id}
+    </select>
+
+<!--    修改某本书籍页面（根据id查找）-->
+    <select id="changeById" parameterType="String" resultType="Books">
+        select id,name,typeId,stock,price,publish,author,address,`desc` from book where id=#{id}
+    </select>
+<!--    修改单本书籍-->
+    <update id="updateBook" parameterType="com.zy.ems.entity.Books">
+        update book set id=#{id},name=#{name},typeId=#{typeId},stock=#{stock},price=#{price},
+                            `desc`=#{desc},publish=#{publish},author=#{author},address=#{address}
+        where id=#{id}
+    </update>
+<!--    添加新书籍-->
+    <insert id="addBook" parameterType="com.zy.ems.entity.Books">
+        insert into book(name,typeId,stock,price,publish,author,address,`desc`)
+        values (#{name},#{typeId},#{stock},#{price},#{publish},#{author},#{address},#{desc})
+    </insert>
+
+<!--    删除书籍-->
+    <delete id="deleteById" parameterType="String">
+        delete from book where id=#{id}
+    </delete>
+<!--    模糊查询-->
+    <select id="fuzzyQuery" parameterType="String" resultType="com.zy.ems.entity.Books">
+        select * from book where name like '${find}%'
+    </select>
+<!--        读者界面-模糊查询-->
+    <select id="reader_fuzzyQuery" parameterType="String" resultType="com.zy.ems.entity.Books">
+        select * from book where name like '${find}%'
+    </select>
+<!--    借阅页面的显示单本图书-->
+    <select id="rent_findById" parameterType="String" resultType="Books">
+        select id,name,typeId,stock,price,publish,author,address,`desc` from book where id=#{id}
+    </select>
+<!--    借书，库存-1-->
+    <update id="rent_Book" parameterType="String">
+        update book set stock=stock-1 where id=#{id}
+    </update>
+    <!--    还书，库存+1-->
+    <update id="return_Book" parameterType="String">
+        update book set stock=stock+1 where name=#{bookName}
+    </update>
+</mapper>
+

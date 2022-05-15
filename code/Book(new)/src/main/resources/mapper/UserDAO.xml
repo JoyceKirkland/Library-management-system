@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--<mapper namespace="com.zy.ems.dao.UserDAO">-->
+<mapper namespace="com.zy.ems.dao.UserDAO">
+<!--    管理员登陆-->
+    <select id="findByUsernameAndPwd" resultType="com.zy.ems.entity.User">
+        select id,name,pwd,state from `user` where name=#{name} and pwd=#{pwd}
+    </select>
+<!--    展示所有管理员-->
+    <select id="findAllUsers" resultType="com.zy.ems.entity.User">
+        select * from `user`
+    </select>
+<!--    根据id查询管理员信息-修改页面-->
+    <select id="change_findUserById" parameterType="String" resultType="User">
+        select * from `user` where id=#{id}
+    </select>
+    <!--    根据id查询管理员信息-->
+    <select id="findUserById" parameterType="String" resultType="User">
+        select * from `user` where id=#{id}
+    </select>
+<!--  更新管理员  -->
+    <update id="updateUser" parameterType="com.zy.ems.entity.User">
+        update `user` set name=#{name},pwd=#{pwd},state=#{state}
+        where id=#{id}
+    </update>
+<!--    添加管理员-->
+    <insert id="addUser" parameterType="com.zy.ems.entity.User">
+        insert into user(name,pwd,state)
+        values (#{name},#{pwd},#{state})
+    </insert>
+<!--删除管理员-->
+    <delete id="deleteUserById" parameterType="String">
+        delete from `user` where id=#{id}
+    </delete>
+</mapper>
